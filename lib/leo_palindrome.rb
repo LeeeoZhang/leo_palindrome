@@ -1,6 +1,6 @@
 require "leo_palindrome/version"
 
-class String 
+module LeoPalindrome
     def palindrome?
         processed_content == processed_content.reverse
     end
@@ -8,6 +8,14 @@ class String
     private
 
         def processed_content
-            scan(/[a-z]/i).join.downcase
-        end
+            self.to_s.scan(/[a-z0-9]/i).join.downcase
+        end    
+end
+
+class String 
+    include LeoPalindrome
+end
+
+class Integer
+    include LeoPalindrome
 end
